@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+	</head>
+	<body>
+		<script>
+			// leetcode 412号
+				// 循环范围
+				let n = 30;		
+				// 结果数组
+				let res = [];
+				
+				// 规则map
+				let map = new Map();
+				map.set(3, "Fizz");
+				map.set(5, "Buzz");
+				
+				// 循环每个数字 循环规则map 测试是否整除
+				for(let i = 1 ;i <= n ;i++){
+					// 初始化存放位置
+					res[i-1] = "";
+					
+					for(let m of map){
+						if(i%m[0] == 0){
+							res[i-1] += m[1];
+						}
+					}
+					// 如果没有被任何整除 存放字符串i
+					if(res[i-1] == ""){
+						res[i-1] = i + "";
+					}
+				}
+				// 查看结果数组
+				console.log(res);
+				
+		</script>
+	</body>
+</html>

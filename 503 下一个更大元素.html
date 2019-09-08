@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function nextGreaterElements(nums) {
+				let res = [];
+				let l = nums.length;
+				// 循环nums数组中每一个元素
+				for (let i = l - 1; i >= 0; i--) {
+					res[i] = cycle(i);
+				}
+
+				function cycle(i) {
+					let j = i + 1;
+					// 优化 第一种情况 不是最后一个 然后比下一个小 结果就是下一个数字
+					if (j != l && nums[i] < nums[j]) {
+						return nums[j];
+					} else if (j != l && nums[i] >= nums[j] && nums[i] < res[j]) {
+						// 第二种 不是最后一个 大于等于下一个 但是比下一个结果小 就和下一个结果相同
+						return res[j];
+					} else {
+						// 最后一种情况 是最后一个 或者 大于等于下一个结果就要重新查询
+						while (j < i + l) {
+							if (nums[j % l] > nums[i]) {
+								return nums[j % l];
+							}
+							j++;
+						}
+						return -1;
+					}
+				}
+				return res;
+			};
+			let nums = [1, 2, 1];
+			console.log(nextGreaterElements(nums));
+		</script>
+
+	</body>
+</html>
