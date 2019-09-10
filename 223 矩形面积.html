@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 别人的解法真的总是那么厉害 
+			var arr = [-3, 0, 3, 4, 0, -1, 9, 2];
+			var computeArea = function(A, B, C, D, E, F, G, H) {
+				// 如果不相交
+				if(A>G || E>C || F>D || B>H) { return (C-A)*(D-B)+(G-E)*(H-F) };
+				// 求相交面积
+				let x = Math.min(C,G) - Math.max(A,E);
+				let y = Math.min(D,H) - Math.max(B,F);
+				// 两个总面积 减去 相交面积
+				return (C-A)*(D-B) + (G-E)*(H-F) - x*y;
+			};
+			let res = computeArea(...arr);
+			console.log(res);
+		</script>
+	</body>
+</html>
