@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var nums = [3, 2, 4]
+			var target = 6
+			var twoSum = function(nums, target) {
+				// 存到map里面
+				var map = new Map()
+				for(let i = 0; i<nums.length;i++){
+					map.set(nums[i], i)
+				}
+				let res = 0
+				for(let i = 0; i<nums.length;i++){
+					res = target-nums[i]
+					if(map.has(res)){
+						// 排除 是同一个元素的情况
+						if(i!= map.get(res))
+						return [i, map.get(res)]
+					}
+				}
+			}
+			console.log(twoSum(nums, target))
+		</script>
+	</body>
+</html>
