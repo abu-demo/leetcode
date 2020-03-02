@@ -27,7 +27,6 @@ MyStack.prototype.pop = function () {
  * @return {number}
  */
 MyStack.prototype.top = function () {
-
     return empty() ? this.stack[0] : null
 };
 
